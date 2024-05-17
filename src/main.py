@@ -5,10 +5,12 @@ import alg_comis_voiajorului.algoritm as alg_comis_voiajorului
 import regine_alpinist.n_queens_hill_climbing as regine_alpinist
 import comis_voiajor_vecin.tsp_nearest_neighbor as comis_voiajor_vecin
 import regine_bkt.algoritm as regine_bkt
+import regine_algoritm_genetic.algotithm as regine_algoritm_genetic
+import grafic_genetic.algoritm as grafic_genetic
 
 
 def info():
-    print("Echipa formata din: Luta Gheorghe, Stefan Constantin, Halevici Diana si Robert")
+    print("Echipa formata din: Halevici Diana , Stefan Constantin , Luta Gheorghe si Robert Franciuc")
 
 def main():
     while True:
@@ -37,28 +39,28 @@ def main():
             print('a')
             
         elif optiune == "b":
-            N = 8  # Schimbă valoarea pentru a încerca alte dimensiuni ale tablei
-            solution, solved = regine_alpinist.solve_n_queens_hill_climbing(N)
-            
-            if solved:
-                print(f"O soluție pentru {N} regine este:")
-                board = [[0]*N for _ in range(N)]
-                for row in range(N):
-                    board[row][solution[row]] = 1
-                regine_alpinist.print_board(board)
-            else:
-                print(f"Nu s-a găsit nicio soluție pentru {N} regine.")
+            N = int(input("Introduceți lungimea tablei (N): "))
+            solution = regine_alpinist.hill_climbing(N)
+            print("Soluție găsită:")
+            regine_alpinist.print_board(solution)
             
         elif optiune == "c":
            alg_calirii_simulate.problema_reginei()
         elif optiune == "d":
-            print('d')
+            N = int(input("Introduceți lungimea tablei (N): "))
+            solution = regine_algoritm_genetic.genetic_algorithm(N)
+            print("Soluție găsită:")
+            regine_algoritm_genetic.print_board(solution)
         elif optiune == "e":
-            print('e')
+           
+            N = int(input("Introduceți lungimea tablei (N): "))
+            delay = float(input("Introduceți delay-ul între mișcări (în secunde): "))
+            solution = grafic_genetic.hill_climbing(N, delay)
+            print("Soluție găsită:")
+            grafic_genetic.plt.show()        
         elif optiune == "f":
             alg_comis_voiajorului.rezolvare_comis_voiajor()
         elif optiune == "g":
-             # Exemplu de coordonate pentru orașe
             cities = [
                 (0, 0), (1, 5), (2, 3), (5, 2), (6, 6)
             ]

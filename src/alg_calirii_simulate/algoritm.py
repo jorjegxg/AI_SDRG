@@ -55,7 +55,7 @@ def afisare_tabla(stare):
 
 
 def problema_reginei():
-    dimensiune = int(input("Introduceți dimensiunea tablei de șah (numărul de regine): "))
-    solutie = simulated_annealing(dimensiune)
+    
+    solutie = simulated_annealing(10)
     print("Soluția găsită:")
     afisare_tabla(solutie)
